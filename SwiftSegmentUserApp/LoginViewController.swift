@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  SwiftLoginApp
 //
-//  Created by Natsumo Ikeda on 2016/05/26.
+//  Created by NIFTY on 2016/10/31.
 //  Copyright © 2016年 NIFTY Corporation. All rights reserved.
 //
 
@@ -41,22 +41,18 @@ class LoginViewController: UIViewController {
         }
         
         // ユーザー名とパスワードでログイン
-        NCMBUser.logInWithUsernameInBackground(self.userNameTextField.text, password: self.passwordTextField.text, block:{(user: NCMBUser?, error: NSError!) in
+        NCMBUser.logInWithUsername(inBackground: self.userNameTextField.text, password: self.passwordTextField.text, block:{(user, error) in
             // TextFieldを空に
             self.cleanTextField()
-            
-            if error != nil {
-                // ログイン失敗時の処理
-                self.errorLabel.text = "ログインに失敗しました:\(error.code)"
-                print("ログインに失敗しました:\(error.code)")
-                
-            }else{
-                // ログイン成功時の処理
-                self.performSegueWithIdentifier("login", sender: self)
+            if let unwrapError = error as? NSError {
+                // 新規登録失敗時の処理
+                self.errorLabel.text = "ログインに失敗しました:\(unwrapError.code)"
+                print("ログインに失敗しました:\(unwrapError.code)")
+            } else {
+                // 新規登録成功時の処理
+                self.performSegue(withIdentifier: "login", sender: self)
                 print("ログインに成功しました:\(user?.objectId)")
-                
             }
-            
         })
         
     }

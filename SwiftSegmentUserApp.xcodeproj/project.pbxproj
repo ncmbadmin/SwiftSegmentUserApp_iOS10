@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		722A7D655C8A5338D64A8045 /* Pods_SwiftSegmentUserApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7725B615EDCE826E01DAF808 /* Pods_SwiftSegmentUserApp.framework */; };
-		AE3410ACA347543B9519C50A /* Pods_SwiftLoginApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99017194D3D0B37FF65E878D /* Pods_SwiftLoginApp.framework */; };
 		BD49DCC21CC9C9340034F3CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD49DCC11CC9C9340034F3CB /* AppDelegate.swift */; };
 		BD49DCC41CC9C9340034F3CB /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD49DCC31CC9C9340034F3CB /* LogoutViewController.swift */; };
 		BD49DCC71CC9C9340034F3CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD49DCC51CC9C9340034F3CB /* Main.storyboard */; };
@@ -41,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE3410ACA347543B9519C50A /* Pods_SwiftLoginApp.framework in Frameworks */,
 				722A7D655C8A5338D64A8045 /* Pods_SwiftSegmentUserApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,7 +2,7 @@
 //  SignUpViewController.swift
 //  SwiftLoginApp
 //
-//  Created by Natsumo Ikeda on 2016/05/26.
+//  Created by NIFTY on 2016/10/31.
 //  Copyright © 2016年 NIFTY Corporation. All rights reserved.
 //
 
@@ -59,24 +59,19 @@ class SignUpViewController: UIViewController {
         user.password = self.passwordTextField.text
         
         //会員の登録を行う
-        user.signUpInBackgroundWithBlock{(error: NSError!) in
+        user.signUpInBackground{(error) in
             // TextFieldを空に
             self.cleanTextField()
-            
-            if error != nil {
+            if let unwrapError = error as? NSError {
                 // 新規登録失敗時の処理
-                self.errorLabel.text = "ログインに失敗しました:\(error.code)"
-                print("ログインに失敗しました:\(error.code)")
-                
+                self.errorLabel.text = "ログインに失敗しました:\(unwrapError.code)"
+                print("ログインに失敗しました:\(unwrapError.code)")
             } else {
                 // 新規登録成功時の処理
-                self.performSegueWithIdentifier("signUp", sender: self)
+                self.performSegue(withIdentifier: "signUp", sender: self)
                 print("ログインに成功しました:\(user.objectId)")
-                
             }
-            
         }
-        
     }
     
     // 背景タップするとキーボードを隠す
