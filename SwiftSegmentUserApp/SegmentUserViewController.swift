@@ -222,10 +222,10 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
                 // valueの値に変更がある場合はuserを更新する
                 if textField.text?.range(of: ",") != nil {
                     // value文字列に[,]がある場合は配列に変換してuserにセットする
-                    self.user.setValue(textField.text?.components(separatedBy: ","), forKey: self.userKeys[textField.tag])
+                    self.user.setObject(textField.text?.components(separatedBy: ","), forKey: self.userKeys[textField.tag])
                 } else {
                     // それ以外は文字列としてuserにセットする
-                    self.user.setValue(textField.text, forKey: self.userKeys[textField.tag])
+                    self.user.setObject(textField.text, forKey: self.userKeys[textField.tag])
                 }
             }
             
@@ -280,9 +280,6 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
      */
     func keyboardWillHide(_ notification: NSNotification) {
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]
-        
-        // autoLayoutに戻す
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
         
         // アニメーションでtextFieldを動かす
         UIView.animate(withDuration: duration as! Double, animations: { () -> Void in
