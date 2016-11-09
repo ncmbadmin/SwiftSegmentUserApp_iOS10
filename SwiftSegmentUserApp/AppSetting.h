@@ -10,16 +10,16 @@
 #define AppSetting_h
 
 // TableViewのセルの高さ
-#define TABLE_VIEW_CELL_HEIGHT 45.0f
+#define TABLE_VIEW_CELL_HEIGHT 45.0
 // deviceToken用のTableViewのセルの高さ
-#define MULTI_LINE_CELL_HEIGHT 55.0f
+#define MULTI_LINE_CELL_HEIGHT 55.0
 // TableViewのボタン表示用のセルの高さ
-#define TABLE_VIEW_POST_BTN_CELL_HEIGHT 130.0f
+#define TABLE_VIEW_POST_BTN_CELL_HEIGHT 130.0
 
 // cellIdentifier
-#define NOMAL_CELL_IDENTIFIER @"nomalCell"
-#define MULTI_LINE_CELL_IDENTIFIER @"multiLineCell"
-#define EDIT_CELL_IDENTIFIER @"editCell"
-#define ADD_CELL_IDENTIFIER @"addCell"
+#define NOMAL_CELL_IDENTIFIER "nomalCell"
+#define MULTI_LINE_CELL_IDENTIFIER "multiLineCell"
+#define EDIT_CELL_IDENTIFIER "editCell"
+#define ADD_CELL_IDENTIFIER "addCell"
 
 #endif /* AppSetting_h */

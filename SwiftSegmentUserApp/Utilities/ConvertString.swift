@@ -15,7 +15,7 @@ class ConvertString: NSObject {
      @param anyObject NSArray or NSDictionary or NSString オブジェクト
      @return 文字列
      */
-    internal static func convertNSStringToAnyObject(_ anyObject:Any) -> String {
+    internal static func convertNSStringToAnyObject(_ anyObject:AnyObject) -> String {
         
         if let arrayObject = anyObject as? [String] {
             // NSArrayをNSStringに変換する

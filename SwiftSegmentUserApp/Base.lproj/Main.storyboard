@@ -14,7 +14,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="SwiftSegmentUserApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -150,7 +150,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="jla-ZJ-YsH">
             <objects>
-                <viewController id="96k-Q9-0Ln" customClass="SignUpViewController" sceneMemberID="viewController">
+                <viewController id="96k-Q9-0Ln" customClass="SignUpViewController" customModule="SwiftSegmentUserApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kGT-WV-Akt"/>
                         <viewControllerLayoutGuide type="bottom" id="7sK-3P-R95"/>
@@ -375,7 +375,7 @@
                                             <constraint firstItem="5QA-yz-aaZ" firstAttribute="width" secondItem="VL7-lh-TpB" secondAttribute="width" multiplier="0.3" id="BYV-g2-zrL"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nomalCell" rowHeight="45" id="eru-52-mWL" customClass="CustomCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nomalCell" rowHeight="45" id="eru-52-mWL" customClass="CustomCell" customModule="SwiftSegmentUserApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="34" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eru-52-mWL" id="Svb-dr-XXD">
@@ -421,7 +421,7 @@
                                             <outlet property="valueLabel" destination="5co-yS-Ik5" id="QGm-51-YRE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="multiLineCell" rowHeight="55" id="yAz-aK-vjK" customClass="CustomCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="multiLineCell" rowHeight="55" id="yAz-aK-vjK" customClass="CustomCell" customModule="SwiftSegmentUserApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="79" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yAz-aK-vjK" id="bRR-ub-QXU">
@@ -466,7 +466,7 @@
                                             <outlet property="valueLabel" destination="9XU-p5-N90" id="WTn-kO-Nid"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="editCell" rowHeight="45" id="8Ut-6J-EY7" customClass="CustomCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="editCell" rowHeight="45" id="8Ut-6J-EY7" customClass="CustomCell" customModule="SwiftSegmentUserApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="134" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ut-6J-EY7" id="Zyl-aI-S1v">
@@ -510,7 +510,7 @@
                                             <outlet property="valueField" destination="1m6-oU-B4h" id="MYW-Me-SV5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addCell" id="5FA-Py-gQL" customClass="CustomCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addCell" id="5FA-Py-gQL" customClass="CustomCell" customModule="SwiftSegmentUserApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="179" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5FA-Py-gQL" id="i2u-ah-qkD">
@@ -626,6 +626,6 @@
         <image name="SignUp" width="284" height="107"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WTd-Gz-Q2f"/>
+        <segue reference="SI2-6G-d4p"/>
     </inferredMetricsTieBreakers>
 </document>

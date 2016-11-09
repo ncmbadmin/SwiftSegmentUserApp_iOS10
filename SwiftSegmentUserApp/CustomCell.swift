@@ -2,7 +2,7 @@
 //  CustomCell.swift
 //  SwiftSegmentUserApp
 //
-//  Created by oono on 2016/10/31.
+//  Created by NIFTY on 2016/10/31.
 //  Copyright © 2016年 NIFTY Corporation. All rights reserved.
 //
 
@@ -33,11 +33,12 @@ class CustomCell: UITableViewCell {
      @param value valueラベルに表示するオブジェクト　（文字列、配列、Dictionary）
      */
     internal func setCell(keyStr:String, value:AnyObject){
-//        self.keyLabel.text = keyStr;
-//        
-//        if valueStr as! String == "mailAddressConfirm" {
-//            
-//        }
+        self.keyLabel.text = keyStr;
+        if !(value is NSNull) && keyStr == "mailAddressConfirm" {
+            self.valueLabel.text = value as! Bool ? "true" : "false"
+        } else {
+            self.valueLabel.text = ConvertString.convertNSStringToAnyObject(value)
+        }
     }
 
     /**
@@ -46,7 +47,9 @@ class CustomCell: UITableViewCell {
      @param valueStr valueテキストフィールドに表示する文字列
      */
     internal func setCell(keyStr:String, editValue:AnyObject) {
+        self.keyLabel.text = keyStr;
         
+        self.valueField.text = ConvertString.convertNSStringToAnyObject(editValue) 
     }
     
 }

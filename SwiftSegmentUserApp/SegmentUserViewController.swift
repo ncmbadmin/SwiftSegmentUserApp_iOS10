@@ -18,7 +18,7 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
     // user情報
     var user:NCMBUser! = nil
     // currentUserに登録されているkeyの配列
-    var userKeys:Array<String>! = nil
+    var userKeys:Array<String> = []
     // user情報で初期で登録されているキー
     let initialUserKeys = ["objectId","userName","password","mailAddress","authData","sessionInfo","mailAddressConfirm","temporaryPassword","createDate","updateDate","acl","sessionToken"]
     // 追加セルのマネージャー
@@ -35,10 +35,13 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         // user情報を取得
         self.getUser()
     }
-
+    
     // MARK: TableViewDataSource
     
     /**
@@ -214,7 +217,7 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
         // tableViewのdatasorceを編集する
         if textField.tag < self.userKeys.count {
             // 最後のセル以外はuserを更新する
-            let userValueStr = ConvertString.convertNSStringToAnyObject(self.user.object(forKey: self.userKeys[textField.tag]))
+            let userValueStr = ConvertString.convertNSStringToAnyObject(self.user.object(forKey: self.userKeys[textField.tag]) as AnyObject)
             if userValueStr != textField.text {
                 // valueの値に変更がある場合はuserを更新する
                 if textField.text?.range(of: ",") != nil {
@@ -243,6 +246,51 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         }
+    }
+    
+    // MARK: keyboardWillShow
+    
+    /**
+     キーボードが表示されたら呼ばれる
+     */
+    func keyboardWillShow(_ notification: NSNotification) {
+        
+        var keyboardRect = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        keyboardRect = self.view.superview!.convert(keyboardRect, to: nil)
+        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]
+        
+        let keyboardPosition = self.view.frame.size.height - keyboardRect.size.height as CGFloat
+        
+        // autoLayoutを解除
+        self.tableView.translatesAutoresizingMaskIntoConstraints = true
+        
+        // 編集するtextFieldの位置がキーボードより下にある場合は、位置を移動する
+        if self.textFieldPosition + CGFloat(TABLE_VIEW_CELL_HEIGHT) > keyboardPosition {
+            UIView.animate(withDuration: duration as! Double, animations: { () -> Void in
+                // アニメーションでtextFieldを動かす
+                var rect = self.tableView.frame
+                rect.origin.y = keyboardRect.origin.y - self.textFieldPosition
+                self.tableView.frame = rect
+            })
+        }
+    }
+    
+    /**
+     キーボードが隠れると呼ばれる
+     */
+    func keyboardWillHide(_ notification: NSNotification) {
+        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]
+        
+        // autoLayoutに戻す
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // アニメーションでtextFieldを動かす
+        UIView.animate(withDuration: duration as! Double, animations: { () -> Void in
+            // アニメーションでtextFieldを動かす
+            var rect = self.tableView.frame
+            rect.origin.y = self.view.frame.size.height - self.tableView.frame.size.height
+            self.tableView.frame = rect
+        })
     }
     
     // 背景をタップするとキーボードを隠す
