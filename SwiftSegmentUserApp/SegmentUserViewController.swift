@@ -82,8 +82,8 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
         
         if indexPath.row < self.userKeys.count {
             // 最後のセル以外
-            let keyStr:String = self.userKeys[indexPath.row]
-            let value = self.user.object(forKey:keyStr)
+            let keyStr = self.userKeys[indexPath.row] as String
+            let value = self.user.object(forKey:keyStr) as AnyObject
             
             if !self.initialUserKeys.contains(keyStr) {
                 // 既存フィールド以外とchannelsはvalueを編集できるようにする
@@ -91,7 +91,7 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
                 if cell == nil {
                     cell = CustomCell(style: UITableViewCellStyle.default, reuseIdentifier: EDIT_CELL_IDENTIFIER)
                 }
-                cell.setCell(keyStr: keyStr, editValue: value as AnyObject)
+                cell.setCell(keyStr: keyStr, editValue: value)
                 cell.valueField.delegate = self
                 cell.valueField.tag = indexPath.row
             } else {
@@ -104,12 +104,12 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 } else {
                     // 通常のセル
-                    cell = tableView.dequeueReusableCell(withIdentifier: MULTI_LINE_CELL_IDENTIFIER) as! CustomCell!
+                    cell = tableView.dequeueReusableCell(withIdentifier: NOMAL_CELL_IDENTIFIER) as! CustomCell!
                     if cell == nil {
-                        cell = CustomCell(style: UITableViewCellStyle.default, reuseIdentifier: MULTI_LINE_CELL_IDENTIFIER)
+                        cell = CustomCell(style: UITableViewCellStyle.default, reuseIdentifier: NOMAL_CELL_IDENTIFIER)
                     }
                 }
-                cell.setCell(keyStr: keyStr, value: value as AnyObject)
+                cell.setCell(keyStr: keyStr, value: value)
                 
             }
         } else {
@@ -161,6 +161,9 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
      送信ボタンをタップした時に呼ばれます
      */
     func postUser(sender:UIButton) {
+        
+        // textFieldの編集を終了する
+        self.view.endEditing(true)
         
         // 追加フィールドにvalueだけセットされてkeyには何もセットされていない場合
         if self.addFieldManager.valueStr != "" && self.addFieldManager.keyStr == "" {

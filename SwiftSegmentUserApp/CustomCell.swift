@@ -32,12 +32,12 @@ class CustomCell: UITableViewCell {
      @param keyStr keyラベルに表示する文字列
      @param value valueラベルに表示するオブジェクト　（文字列、配列、Dictionary）
      */
-    internal func setCell(keyStr:String, value:AnyObject){
+    internal func setCell(keyStr:String, value:AnyObject?){
         self.keyLabel.text = keyStr;
         if !(value is NSNull) && keyStr == "mailAddressConfirm" {
-            self.valueLabel.text = value as! Bool ? "true" : "false"
+            self.valueLabel.text = value != nil && value as! Bool ? "true" : "false"
         } else {
-            self.valueLabel.text = ConvertString.convertNSStringToAnyObject(value)
+            self.valueLabel.text = ConvertString.convertNSStringToAnyObject(value!)
         }
     }
 
@@ -46,10 +46,10 @@ class CustomCell: UITableViewCell {
      @param keyStr keyラベルに表示する文字列
      @param valueStr valueテキストフィールドに表示する文字列
      */
-    internal func setCell(keyStr:String, editValue:AnyObject) {
+    internal func setCell(keyStr:String, editValue:AnyObject?) {
         self.keyLabel.text = keyStr;
         
-        self.valueField.text = ConvertString.convertNSStringToAnyObject(editValue) 
+        self.valueField.text = editValue != nil ? ConvertString.convertNSStringToAnyObject(editValue!) : ""
     }
     
 }
