@@ -136,11 +136,13 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
      最新のuser情報を取得します。
      */
     func getUser() {
+        // NCMBUserのインスタンスを作成
         let user = NCMBUser.current()
         
+        // ユーザー情報をデータストアから取得
         user?.fetchInBackground({ (error) in
             if let unwrapError = error as? NSError {
-                // 新規登録失敗時の処理
+                // ユーザー情報の取得が失敗した場合の処理
                 self.statusLabel.text = "取得に失敗しました:\(unwrapError.code)"
             } else {
                 // ユーザー情報の取得が成功した場合の処理
@@ -159,6 +161,13 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
      送信ボタンをタップした時に呼ばれます
      */
     func postUser(sender:UIButton) {
+        
+        // 追加フィールドにvalueだけセットされてkeyには何もセットされていない場合
+        if self.addFieldManager.valueStr != "" && self.addFieldManager.keyStr == "" {
+            self.statusLabel.text = "key,valueをセットで入力してください"
+            return
+        }
+        
         // 追加用セルの値をuserにセットする
         if self.addFieldManager.keyStr != "" {
             // keyに値が設定されていた場合
@@ -174,6 +183,8 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
         self.user.saveInBackground { (error) in
             if let unwrapError = error as? NSError {
                 self.statusLabel.text = "保存に失敗しました:\(unwrapError.code)"
+                // 保存に失敗した場合は、userから削除する
+                self.user.remove(forKey: self.addFieldManager.keyStr)
             } else {
                 self.statusLabel.text = "保存に成功しました"
                 // tableViewの内容を更新

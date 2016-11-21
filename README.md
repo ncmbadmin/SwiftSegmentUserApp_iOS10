@@ -1,50 +1,62 @@
-# 【iOS Swift】アプリにログイン機能をつけよう！
-![画像1](/readme-img/001.png)
+# 【iOS10 Swift】ユーザー情報を更新してみよう！
+*2016/10/26作成*
+
+![画像01](/readme-img/001.png)
 
 ## 概要
-* [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『会員管理機能』を利用してSwiftアプリにログイン機能を実装したサンプルプロジェクトです
+* [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『会員管理機能』を利用してObjective-Cアプリにログイン機能を実装し、ユーザー情報を更新するサンプルプロジェクトです
 * 簡単な操作ですぐに [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の機能を体験いただけます★☆
+* このサンプルはiOS10に対応しています
+ * iOS8以上でご利用いただけます
 
 ## ニフティクラウドmobile backendって何？？
 スマートフォンアプリのバックエンド機能（プッシュ通知・データストア・会員管理・ファイルストア・SNS連携・位置情報検索・スクリプト）が**開発不要**、しかも基本**無料**(注1)で使えるクラウドサービス！
 
 注1：詳しくは[こちら](http://mb.cloud.nifty.com/price.htm)をご覧ください
 
-![画像2](/readme-img/002.png)
+![画像02](/readme-img/002.png)
 
 ## 動作環境
-* Mac OS X 10.10(Yosemite)
-* Xcode ver. 7.2.1
-* Simulator ver. 9.2
+* Mac OS X 10.11.6(El Capitan)
+* iPhone5 iOS 9.3.5
+* iPhone6s iOS 10.0.1
+* Simulator iOS 10.0
+ * iPhone7
 
-※上記内容で動作確認をしています。
+※上記内容で動作確認をしています
 
-
-## 手順
-### 1. [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の会員登録とログイン→アプリ作成
+## 作業の手順
+### 1. [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の会員登録とログイン
 
 * 上記リンクから会員登録（無料）をします。登録ができたらログインをすると下図のように「アプリの新規作成」画面が出るのでアプリを作成します
 
-![画像3](/readme-img/003.png)
+![画像03](/readme-img/003.png)
 
 * アプリ作成されると下図のような画面になります
 * この２種類のAPIキー（アプリケーションキーとクライアントキー）はXcodeで作成するiOSアプリに[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)を紐付けるために使用します
 
-![画像4](/readme-img/004.png)
+![画像04](/readme-img/004.png)
 
 * 動作確認後に会員情報が保存される場所も確認しておきましょう
 
-![画像5](/readme-img/005.png)
+![画像05](/readme-img/005.png)
 
-### 2. [GitHub](https://github.com/natsumo/SwiftLoginApp.git)からサンプルプロジェクトのダウンロード
+### 2. [GitHub](https://github.com/NIFTYCloud-mbaas/SwiftSegmentUserApp_iOS10)からサンプルプロジェクトのダウンロード
 
-* この画面([GitHub](https://github.com/natsumo/SwiftLoginApp.git))の![画像10](/readme-img/010.png)ボタンをクリックし、さらに![画像11](/readme-img/011.PNG)ボタンをクリックしてサンプルプロジェクトをMacにダウンロードします
+* 下記リンクをクリックしてプロジェクトをダウンロードをMacにダウンロードします
+
+ * __[SwiftSegmentUserApp](https://github.com/NIFTYCloud-mbaas/SwiftSegmentUserApp_iOS10/archive/master.zip)__
 
 ### 3. Xcodeでアプリを起動
 
-* ダウンロードしたフォルダを開き、![画像09](/readme-img/009.png)をダブルクリックしてXcode開きます　![画像08](/readme-img/008.png)
+* ダウンロードしたフォルダを開き、「__SwiftSegmentUserApp.xcworkspace__」をダブルクリックしてXcode開きます(白い方です)
 
-![画像6](/readme-img/006.png)
+![画像09](/readme-img/009.png)
+![画像06](/readme-img/006.png)
+
+* 「SwiftSegmentUserApp.xcodeproj」（青い方）ではないので注意してください！
+
+![画像08](/readme-img/008.png)
 
 ### 4. APIキーの設定
 
@@ -58,87 +70,102 @@
 * 書き換え終わったら`command + s`キーで保存をします
 
 ### 5. 動作確認
-* Xcode画面で左上の実行ボタン（さんかくの再生マーク）をクリックします
+* Xcode画面の左上、適当なSimulatorを選択します
+ * iPhone7の場合は以下のようになります
+* 実行ボタン（さんかくの再生マーク）をクリックします
 
-![画像12](/readme-img/012.png)
-
-* __ビルド時にエラーが発生した場合の対処方法__
- * Xcodeのバージョンが古い場合`import NCMB`にエラーが発生し、上手くSDKが読み込めないことがあります
- * その場合は[【Swift】SDKの読み込みにuse framework!が使えない場合の対処方法](http://goo.gl/Z1D0K3)をご覧いただき、別の読み込み方法をお試しください
-
-* シミュレーターが起動したら、Login画面が表示されます
+* アプリが起動したら、Login画面が表示されます
 * 初回は__`SignUp`__ ボタンをクリックして、会員登録を行います
+
+![画像13](/readme-img/013.png)
+
+* `User Name`と`Password`を２つ入力して![画像12](/readme-img/012.png)ボタンをタップします
+* 会員登録が成功するとログインされ、下記ユーザー情報の一覧が表示されます
+* SignUpに成功するとmBaaS上に会員情報が作成されます！
 
 ![画像14](/readme-img/014.png)
 
-* `User Name`と`Password`を２つ入力して![画像13](/readme-img/013.png)ボタンをタップします
-* 会員登録が成功するとログインされ、下記画面が表示されます
- * このときmBaaS上に会員情報が作成されます！
- * ログインに失敗した場合は画面にエラーコードが表示されます
- * 万が一エラーが発生した場合は、[こちら](http://mb.cloud.nifty.com/doc/current/rest/common/error.html)よりエラー内容を確認いただけます
+* ログインに失敗した場合は画面にエラーコードが表示されます
+* エラーが発生した場合は、[こちら](http://mb.cloud.nifty.com/doc/current/rest/common/error.html)よりエラー内容を確認いただけます
+
+#### 新しいフィールドの追加
+* 新しいフィールドの追加をしてみましょう。"favorite"というフィールドを作り、中身には"music"と入れてみました。こうすることで、ユーザー情報に新しい属性を付与することができるようになります！
+* 編集が完了したら更新ボタンをタップして下さい
 
 ![画像15](/readme-img/015.png)
 
-* __`Logout`__ ボタンをタップするとログアウトし、元の画面に戻ります
-* 登録された会員情報を使ってLogin画面からログインが可能です（操作は同様です）
+* 更新後、tableViewが自動でリロードされ、追加・更新が行われていることがわかります。追加したフィールドは後から編集することが可能です
 
------
+![画像16](/readme-img/016.png)
 
-* 保存に成功したら、[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボードから「会員管理」を確認してみましょう！
+* ダッシュボードから、更新ができていることを確認してみましょう！
 
-![画像1](/readme-img/001.png)
+![画像17](/readme-img/017.png)
 
 ## 解説
-サンプルプロジェクトに実装済みの内容のご紹介
+* 下記３点について解説します
+ * 会員登録
+ * ログイン
+ * 会員情報の取得
 
-#### SDKのインポートと初期設定
-* ニフティクラウドmobile backend の[ドキュメント（クイックスタート）](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_ios.html)をSwift版に書き換えたドキュメントをご用意していますので、ご活用ください
- * [SwiftでmBaaSを始めよう！(＜CocoaPods＞でuse_framewoks!を有効にした方法)](http://qiita.com/natsumo/items/57d3a4d9be16b0490965)
- * [＜CocoaPods＞SwiftでmBaaSを始めよう！](http://qiita.com/natsumo/items/b2d18d87d57300c8d81c)
-
-#### ロジック
- * `Main.storyboard`でデザインを作成し、`LoginViewController.swift`,`SignUpViewController.swift`,`LogoutViewController.swift`にロジックを書いています
- * ログイン、会員登録、ログアウト部分の処理は以下のように記述されます　※ただし、左記処理以外のコードは除いています
-
-`LoginViewController.swift`
-
-```swift
-// ログイン
-NCMBUser.logInWithUsernameInBackground(self.userNameTextField.text, password: self.passwordTextField.text, block:{(user: NCMBUser?, error: NSError!) in
-    if error != nil {
-        // ログイン失敗時の処理
-        
-    }else{
-        // ログイン成功時の処理
-        
-    }
-})
-```
-
+### 会員登録
 `SignUpViewController.swift`
 
 ```swift
-//会員登録
-user.signUpInBackgroundWithBlock{(error: NSError!) in
-    if error != nil {
+// 会員登録
+//NCMBUserのインスタンスを作成
+let user = NCMBUser()
+//ユーザー名を設定
+user.userName = self.userNameTextField.text
+//パスワードを設定
+user.password = self.passwordTextField.text
+
+//会員の登録を行う
+user.signUpInBackground{(error) in
+    if let unwrapError = error as? NSError {
         // 新規登録失敗時の処理
-        
-    }else{
+
+    } else {
         // 新規登録成功時の処理
-        
+
     }
 }
 ```
 
-`LogoutViewController.swift`
+### ログイン
 
 ```swift
-// ログアウト
-NCMBUser.logOut()
+// ログイン
+NCMBUser.logInWithUsername(inBackground: self.userNameTextField.text, password: self.passwordTextField.text, block:{(user, error) in
+    if let unwrapError = error as? NSError {
+        // 新規登録失敗時の処理
+
+    } else {
+        // 新規登録成功時の処理
+
+    }
+})
+```
+
+### 会員情報の取得
+`SegmentUserViewController.swift`
+
+```swift
+// NCMBUserのインスタンスを作成
+let user = NCMBUser.current()
+
+// ユーザー情報をデータストアから取得
+user?.fetchInBackground({ (error) in
+    if let unwrapError = error as? NSError {
+        // ユーザー情報の取得が失敗した場合の処理
+
+    } else {
+        // ユーザー情報の取得が成功した場合の処理
+
+    }
+})
 ```
 
 ## 参考
-* ニフティクラウドmobile backend の[ドキュメント（会員管理）](http://mb.cloud.nifty.com/doc/current/user/basic_usage_ios.html)をSwift版に書き換えたドキュメントをご用意していますので、ご活用ください
- * [Swiftでログイン機能をつけてみよう！](http://qiita.com/natsumo/items/25c97182fab4db5629b1)
 * 同じ内容の【Objective-C】版もご用意しています
- * https://github.com/natsumo/ObjcLoginApp
+ * [ObjcSegmentUserApp_iOS10](https://github.com/NIFTYCloud-mbaas/ObjcSegmentUserApp_iOS10)

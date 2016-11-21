@@ -542,7 +542,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="qlz-6E-aCm"/>
                                                         <constraint firstAttribute="width" constant="100" id="x14-If-lw1"/>
                                                     </constraints>
-                                                    <state key="normal" title="送信">
+                                                    <state key="normal" title="更新">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
