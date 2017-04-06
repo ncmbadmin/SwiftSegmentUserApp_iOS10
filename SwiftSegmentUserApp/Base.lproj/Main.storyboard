@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E7o-kx-W55">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E7o-kx-W55">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -279,7 +279,7 @@
                     <connections>
                         <outlet property="errorLabel" destination="mvw-l0-SZy" id="xYj-nt-Lse"/>
                         <outlet property="passwordTextField" destination="aNl-mX-bJK" id="pt8-Yj-tQN"/>
-                        <outlet property="passwordTextField_second" destination="Pon-Bs-ACG" id="7pu-pl-psL"/>
+                        <outlet property="passwordTextFieldSecond" destination="Pon-Bs-ACG" id="kLA-hw-dhq"/>
                         <outlet property="userNameTextField" destination="fSu-wT-Wp3" id="zqG-f3-eSy"/>
                         <segue destination="tFr-cF-sbY" kind="presentation" identifier="signUp" id="SI2-6G-d4p"/>
                     </connections>

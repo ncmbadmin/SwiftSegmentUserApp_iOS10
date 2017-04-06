@@ -64,13 +64,13 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == self.userKeys.count {
-            return CGFloat(TABLE_VIEW_POST_BTN_CELL_HEIGHT)
+            return TABLE_VIEW_POST_BTN_CELL_HEIGHT
         } else if self.userKeys[indexPath.row] == "acl" {
             // aclセルのみ２行で表示する
-            return CGFloat(MULTI_LINE_CELL_HEIGHT)
+            return MULTI_LINE_CELL_HEIGHT
         }
         
-        return CGFloat(TABLE_VIEW_CELL_HEIGHT)
+        return TABLE_VIEW_CELL_HEIGHT
     }
     
     /**
@@ -140,11 +140,8 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
         let user = NCMBUser.current()
         
         // ユーザー情報をデータストアから取得
-        user?.fetchInBackground({ (error) in
-            if let unwrapError = error as? NSError {
-                // ユーザー情報の取得が失敗した場合の処理
-                self.statusLabel.text = "取得に失敗しました:\(unwrapError.code)"
-            } else {
+        user?.fetchInBackground { error in
+            if error == nil {
                 // ユーザー情報の取得が成功した場合の処理
                 print("取得に成功")
                 self.user = user
@@ -153,8 +150,11 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
                 self.addFieldManager.keyStr = ""
                 self.addFieldManager.valueStr = ""
                 self.tableView.reloadData()
+            } else {
+                // ユーザー情報の取得が失敗した場合の処理
+                self.statusLabel.text = "取得に失敗しました:\((error as! NSError).code)"
             }
-        })
+        }
     }
     
     /**
@@ -183,15 +183,15 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         // user情報を更新
-        self.user.saveInBackground { (error) in
-            if let unwrapError = error as? NSError {
-                self.statusLabel.text = "保存に失敗しました:\(unwrapError.code)"
-                // 保存に失敗した場合は、userから削除する
-                self.user.remove(forKey: self.addFieldManager.keyStr)
-            } else {
+        self.user.saveInBackground { error in
+            if error == nil {
                 self.statusLabel.text = "保存に成功しました"
                 // tableViewの内容を更新
                 self.getUser()
+            } else {
+                self.statusLabel.text = "保存に失敗しました:\((error as! NSError).code)"
+                // 保存に失敗した場合は、userから削除する
+                self.user.remove(forKey: self.addFieldManager.keyStr)
             }
         }
     }
