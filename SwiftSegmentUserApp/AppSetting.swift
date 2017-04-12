@@ -2,8 +2,8 @@
 //  AppSetting.swift
 //  SwiftSegmentPushApp
 //
-//  Created by NIFTY on 2017/04/04.
-//  Copyright © 2017年 NIFTY All rights reserved.
+//  Created by FJCT on 2017/04/04.
+//  Copyright 2017 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
 //
 
 import UIKit
