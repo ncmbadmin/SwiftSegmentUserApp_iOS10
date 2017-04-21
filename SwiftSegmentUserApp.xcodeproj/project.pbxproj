@@ -10,6 +10,7 @@
 		722A7D655C8A5338D64A8045 /* Pods_SwiftSegmentUserApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7725B615EDCE826E01DAF808 /* Pods_SwiftSegmentUserApp.framework */; };
 		9D125C601DC6FF7400B2AF2C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D125C5F1DC6FF7400B2AF2C /* CustomCell.swift */; };
 		9D125C631DC7002300B2AF2C /* ConvertString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D125C621DC7002300B2AF2C /* ConvertString.swift */; };
+		9DDB03BB1E96259A00CBBA99 /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDB03BA1E96259A00CBBA99 /* AppSetting.swift */; };
 		BD49DCC21CC9C9340034F3CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD49DCC11CC9C9340034F3CB /* AppDelegate.swift */; };
 		BD49DCC41CC9C9340034F3CB /* SegmentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD49DCC31CC9C9340034F3CB /* SegmentUserViewController.swift */; };
 		BD49DCC71CC9C9340034F3CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD49DCC51CC9C9340034F3CB /* Main.storyboard */; };
@@ -25,10 +26,9 @@
 		7725B615EDCE826E01DAF808 /* Pods_SwiftSegmentUserApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftSegmentUserApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EEA138A99992490E2D66AF3 /* Pods-SwiftSegmentUserApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSegmentUserApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSegmentUserApp/Pods-SwiftSegmentUserApp.debug.xcconfig"; sourceTree = "<group>"; };
 		99017194D3D0B37FF65E878D /* Pods_SwiftLoginApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLoginApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D125C5C1DC6FE2C00B2AF2C /* AppSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppSetting.h; sourceTree = "<group>"; };
-		9D125C5E1DC6FECD00B2AF2C /* SwiftSegmentUserApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSegmentUserApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D125C5F1DC6FF7400B2AF2C /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		9D125C621DC7002300B2AF2C /* ConvertString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertString.swift; sourceTree = "<group>"; };
+		9DDB03BA1E96259A00CBBA99 /* AppSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
 		BD49DCBE1CC9C9340034F3CB /* SwiftSegmentUserApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSegmentUserApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD49DCC11CC9C9340034F3CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BD49DCC31CC9C9340034F3CB /* SegmentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SegmentUserViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -111,8 +111,7 @@
 				BD49DCC81CC9C9340034F3CB /* Assets.xcassets */,
 				BD49DCCA1CC9C9340034F3CB /* LaunchScreen.storyboard */,
 				BD49DCCD1CC9C9340034F3CB /* Info.plist */,
-				9D125C5C1DC6FE2C00B2AF2C /* AppSetting.h */,
-				9D125C5E1DC6FECD00B2AF2C /* SwiftSegmentUserApp-Bridging-Header.h */,
+				9DDB03BA1E96259A00CBBA99 /* AppSetting.swift */,
 				9D125C611DC7000300B2AF2C /* Utilities */,
 			);
 			path = SwiftSegmentUserApp;
@@ -243,6 +242,7 @@
 			files = (
 				BD49DCD41CC9D28B0034F3CB /* LoginViewController.swift in Sources */,
 				BD49DCC41CC9C9340034F3CB /* SegmentUserViewController.swift in Sources */,
+				9DDB03BB1E96259A00CBBA99 /* AppSetting.swift in Sources */,
 				9D125C631DC7002300B2AF2C /* ConvertString.swift in Sources */,
 				9D125C601DC6FF7400B2AF2C /* CustomCell.swift in Sources */,
 				BD49DCD61CC9D2E40034F3CB /* SignUpViewController.swift in Sources */,
@@ -371,7 +371,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobilebackend.niftycloud.SwiftSegmentUserApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSegmentUserApp/SwiftSegmentUserApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -387,7 +386,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobilebackend.niftycloud.SwiftSegmentUserApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSegmentUserApp/SwiftSegmentUserApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

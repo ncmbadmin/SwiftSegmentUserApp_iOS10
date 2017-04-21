@@ -2,8 +2,8 @@
 //  SignUpViewController.swift
 //  SwiftSegmentUserApp
 //
-//  Created by NIFTY on 2016/10/31.
-//  Copyright © 2016年 NIFTY Corporation. All rights reserved.
+//  Created by FJCT on 2016/10/31.
+//  Copyright 2017 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     // Password
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordTextField_second: UITextField!
+    @IBOutlet weak var passwordTextFieldSecond: UITextField!
     
     // errorLabel
     @IBOutlet weak var errorLabel: UILabel!
@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         // Passwordをセキュリティ入力に設定
         self.passwordTextField.isSecureTextEntry = true
-        self.passwordTextField_second.isSecureTextEntry = true
+        self.passwordTextFieldSecond.isSecureTextEntry = true
         
     }
     
@@ -35,14 +35,14 @@ class SignUpViewController: UIViewController {
         closeKeyboad()
         
         // 入力確認
-        if self.userNameTextField.text!.isEmpty || self.passwordTextField.text!.isEmpty || self.passwordTextField_second.text!.isEmpty {
+        if self.userNameTextField.text!.isEmpty || self.passwordTextField.text!.isEmpty || self.passwordTextFieldSecond.text!.isEmpty {
             self.errorLabel.text = "未入力の項目があります"
             // TextFieldを空に
             self.cleanTextField()
             
             return
             
-        } else if passwordTextField.text! != passwordTextField_second.text! {
+        } else if passwordTextField.text! != passwordTextFieldSecond.text! {
             self.errorLabel.text = "Passwordが一致しません"
             // TextFieldを空に
             self.cleanTextField()
@@ -59,17 +59,17 @@ class SignUpViewController: UIViewController {
         user.password = self.passwordTextField.text
         
         //会員の登録を行う
-        user.signUpInBackground{(error) in
+        user.signUpInBackground{ error in
             // TextFieldを空に
             self.cleanTextField()
-            if let unwrapError = error as? NSError {
-                // 新規登録失敗時の処理
-                self.errorLabel.text = "ログインに失敗しました:\(unwrapError.code)"
-                print("ログインに失敗しました:\(unwrapError.code)")
-            } else {
+            if error == nil {
                 // 新規登録成功時の処理
                 self.performSegue(withIdentifier: "signUp", sender: self)
                 print("ログインに成功しました:\(user.objectId)")
+            } else {
+                // 新規登録失敗時の処理
+                self.errorLabel.text = "ログインに失敗しました:\((error as! NSError).code)"
+                print("ログインに失敗しました:\((error as! NSError).code)")
             }
         }
     }
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController {
     func cleanTextField(){
         userNameTextField.text = ""
         passwordTextField.text = ""
-        passwordTextField_second.text = ""
+        passwordTextFieldSecond.text = ""
         
     }
     
@@ -98,7 +98,7 @@ class SignUpViewController: UIViewController {
     func closeKeyboad(){
         userNameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
-        passwordTextField_second.resignFirstResponder()
+        passwordTextFieldSecond.resignFirstResponder()
         
     }
     

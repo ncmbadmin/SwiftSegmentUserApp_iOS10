@@ -2,8 +2,8 @@
 //  LoginViewController.swift
 //  SwiftSegmentUserApp
 //
-//  Created by NIFTY on 2016/10/31.
-//  Copyright © 2016年 NIFTY Corporation. All rights reserved.
+//  Created by FJCT on 2016/10/31.
+//  Copyright 2017 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
 //
 
 import UIKit
@@ -44,14 +44,14 @@ class LoginViewController: UIViewController {
         NCMBUser.logInWithUsername(inBackground: self.userNameTextField.text, password: self.passwordTextField.text, block:{(user, error) in
             // TextFieldを空に
             self.cleanTextField()
-            if let unwrapError = error as? NSError {
-                // 新規登録失敗時の処理
-                self.errorLabel.text = "ログインに失敗しました:\(unwrapError.code)"
-                print("ログインに失敗しました:\(unwrapError.code)")
-            } else {
+            if error == nil {
                 // 新規登録成功時の処理
                 self.performSegue(withIdentifier: "login", sender: self)
                 print("ログインに成功しました:\(user?.objectId)")
+            } else {
+                // 新規登録失敗時の処理
+                self.errorLabel.text = "ログインに失敗しました:\((error as! NSError).code)"
+                print("ログインに失敗しました:\((error as! NSError).code)")
             }
         })
         
