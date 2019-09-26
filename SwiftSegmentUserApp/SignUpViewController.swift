@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController {
     // SignUpボタン押下時の距離
     @IBAction func signUpBtn(_ sender: UIButton) {
         // キーボードを閉じる
-        closeKeyboad()
+        self.closeKeyboad()
         
         // 入力確認
         if self.userNameTextField.text!.isEmpty || self.passwordTextField.text!.isEmpty || self.passwordTextFieldSecond.text!.isEmpty {
@@ -59,19 +59,27 @@ class SignUpViewController: UIViewController {
         user.password = self.passwordTextField.text
         
         //会員の登録を行う
-        user.signUpInBackground{ error in
+        user.signUpInBackground(callback: { result in
             // TextFieldを空に
-            self.cleanTextField()
-            if error == nil {
-                // 新規登録成功時の処理
-                self.performSegue(withIdentifier: "signUp", sender: self)
-                print("ログインに成功しました:\(user.objectId)")
-            } else {
-                // 新規登録失敗時の処理
-                self.errorLabel.text = "ログインに失敗しました:\((error as! NSError).code)"
-                print("ログインに失敗しました:\((error as! NSError).code)")
+            DispatchQueue.main.async {
+                self.cleanTextField()
             }
-        }
+            
+            switch result {
+                case .success:
+                    // 新規登録成功時の処理
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "signUp", sender: self)
+                    }
+                    print("ログインに成功しました:\(String(describing: user.objectId))")
+                case let .failure(error):
+                    // 新規登録失敗時の処理
+                    DispatchQueue.main.async {
+                        self.errorLabel.text = "ログインに失敗しました:\((error as NSError).code)"
+                    }
+                    print("ログインに失敗しました:\((error as NSError).code)")
+                }
+        })
     }
     
     // 背景タップするとキーボードを隠す

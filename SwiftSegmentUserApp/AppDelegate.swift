@@ -14,13 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     //********** APIキーの設定 **********
-    let applicationkey = "YOUR_NCMB_APPLICATION_KEY"
-    let clientkey      = "YOUR_NCMB_CLIENT_KEY"
+//    let applicationkey = "YOUR_NCMB_APPLICATION_KEY"
+//    let clientkey      = "YOUR_NCMB_CLIENT_KEY"
+    let applicationkey = "27d6ef658a713529090f5d98963517fee7ae861d3864d66c7f7ab211ccf907c4"
+    let clientkey      = "ed76d3b2bee59bd4b203013034c522ae246e588067fdc830973055e4bb520e03"
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        //********** SDKの初期化 **********
-        NCMB.setApplicationKey(applicationkey, clientKey: clientkey)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // SDKの初期化
+        NCMB.initialize(applicationKey: applicationkey, clientKey: clientkey)
+        
         return true
     }
 

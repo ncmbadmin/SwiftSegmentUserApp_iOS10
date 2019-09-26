@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "SegmentUserViewController.tableView(_:numberOfRowsInSection:):SegmentUserViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SegmentUserViewController.postUser(sender:):SegmentUserViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.user">
+            </PersistentString>
+            <PersistentString
+               value = "self.addFieldManager.valueStr">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in SegmentUserViewController.postUser(sender:):SegmentUserViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SegmentUserViewController.tableView(_:heightForRowAt:):SegmentUserViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SegmentUserViewController.tableView(_:cellForRowAt:):SegmentUserViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

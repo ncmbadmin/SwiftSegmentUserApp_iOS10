@@ -40,18 +40,34 @@ class LoginViewController: UIViewController {
             
         }
         
-        // ユーザー名とパスワードでログイン
-        NCMBUser.logInWithUsername(inBackground: self.userNameTextField.text, password: self.passwordTextField.text, block:{(user, error) in
+        NCMBUser.logInInBackground(userName: self.userNameTextField.text!, password: self.passwordTextField.text!, callback: { result in
             // TextFieldを空に
-            self.cleanTextField()
-            if error == nil {
-                // 新規登録成功時の処理
-                self.performSegue(withIdentifier: "login", sender: self)
-                print("ログインに成功しました:\(user?.objectId)")
-            } else {
+            DispatchQueue.main.async {
+                self.cleanTextField()
+            }
+            
+            switch result {
+            case .success:
+                // ログインに成功した場合の処理
+                print("ログインに成功しました")
+                
+                // ログイン状況の確認
+                if let user = NCMBUser.currentUser {
+                    print("ログインに成功しました: \(user.userName!)")
+                    // 新規登録成功時の処理
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "login", sender: self)
+                    }
+                } else {
+                    print("ログインしていません")
+                }
+                
+            case let .failure(error):
                 // 新規登録失敗時の処理
-                self.errorLabel.text = "ログインに失敗しました:\((error as! NSError).code)"
-                print("ログインに失敗しました:\((error as! NSError).code)")
+                DispatchQueue.main.async {
+                    self.errorLabel.text = "ログインに失敗しました:\(error)"
+                }
+                print("ログインに失敗しました:\(error)")
             }
         })
         
