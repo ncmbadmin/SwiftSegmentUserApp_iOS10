@@ -2,11 +2,6 @@
 platform :ios, '10.0'
 
 target 'SwiftSegmentUserApp' do
-    # Comment the next line if you don't want to use dynamic frameworks
-    use_frameworks!
-    
-    # Pods for SwiftSegmentUserApp
-    pod 'NCMB', :git => 'https://github.com/NIFCloud-mbaas/ncmb_swift'
-    
+    pod 'NCMB', :git => 'https://github.com/NIFCLOUD-mbaas/ncmb_ios.git'
 end
 
