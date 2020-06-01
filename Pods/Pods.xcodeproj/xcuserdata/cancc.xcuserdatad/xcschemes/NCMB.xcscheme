@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "708C9E37EBCF518B058EFF5E163C4E98"
-               BuildableName = "NCMB.framework"
+               BuildableName = "libNCMB.a"
                BlueprintName = "NCMB"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

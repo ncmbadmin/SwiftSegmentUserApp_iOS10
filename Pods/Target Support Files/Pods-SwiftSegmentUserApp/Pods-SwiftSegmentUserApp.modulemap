@@ -1,4 +1,4 @@
-framework module Pods_SwiftSegmentUserApp {
+module Pods_SwiftSegmentUserApp {
   umbrella header "Pods-SwiftSegmentUserApp-umbrella.h"
 
   export *

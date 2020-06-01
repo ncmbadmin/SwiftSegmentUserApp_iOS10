@@ -2,6 +2,6 @@
 platform :ios, '10.0'
 
 target 'SwiftSegmentUserApp' do
-    pod 'NCMB', :git => 'https://github.com/NIFCLOUD-mbaas/ncmb_ios.git'
+    pod 'NCMB', :git => 'https://github.com/NIFCLOUD-mbaas/ncmb_swift.git'
 end
 
