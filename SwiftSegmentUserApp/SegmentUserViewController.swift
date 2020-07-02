@@ -35,9 +35,6 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
         // user情報を取得
         self.getUser()
     }
@@ -87,7 +84,7 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
             
             if !self.initialUserKeys.contains(keyStr) {
                 // 既存フィールド以外とchannelsはvalueを編集できるようにする
-                cell = tableView.dequeueReusableCell(withIdentifier: EDIT_CELL_IDENTIFIER) as! CustomCell!
+                cell = tableView.dequeueReusableCell(withIdentifier: EDIT_CELL_IDENTIFIER) as? CustomCell
                 if cell == nil {
                     cell = CustomCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: EDIT_CELL_IDENTIFIER)
                 }
@@ -98,13 +95,13 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
                 // 編集なしのセル (表示のみ)
                 if keyStr == "acl" {
                     // 表示文字数が多いセルはセルの高さを変更して全体を表示させる
-                    cell = tableView.dequeueReusableCell(withIdentifier: MULTI_LINE_CELL_IDENTIFIER) as! CustomCell!
+                    cell = tableView.dequeueReusableCell(withIdentifier: MULTI_LINE_CELL_IDENTIFIER) as? CustomCell
                     if cell == nil {
                         cell = CustomCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: MULTI_LINE_CELL_IDENTIFIER)
                     }
                 } else {
                     // 通常のセル
-                    cell = tableView.dequeueReusableCell(withIdentifier: NOMAL_CELL_IDENTIFIER) as! CustomCell!
+                    cell = tableView.dequeueReusableCell(withIdentifier: NOMAL_CELL_IDENTIFIER) as? CustomCell
                     if cell == nil {
                         cell = CustomCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: NOMAL_CELL_IDENTIFIER)
                     }
@@ -114,7 +111,7 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
             }
         } else {
             // 最後のセルは追加用セルと登録ボタンを表示
-            cell = tableView.dequeueReusableCell(withIdentifier: ADD_CELL_IDENTIFIER) as! CustomCell!
+            cell = tableView.dequeueReusableCell(withIdentifier: ADD_CELL_IDENTIFIER) as? CustomCell
             if cell == nil {
                 cell = CustomCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: ADD_CELL_IDENTIFIER)
             }
@@ -136,40 +133,14 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
      最新のuser情報を取得します。
      */
     func getUser() {
-        // NCMBUserのインスタンスを作成
-        let user = NCMBUser.currentUser
-        
-        // ユーザー情報をデータストアから取得
-        user?.fetchInBackground(callback: { result in
-            switch result {
-            case .success:
-                // ユーザー情報の取得が成功した場合の処理
-                print("取得に成功")
-                
-                // ログイン状況の確認
-                if let user = NCMBUser.currentUser {
-                    // ユーザー情報の取得が成功した場合の処理
-                    self.user = user
-//                    self.userKeys = user.fields as! Array<String>!
-                    self.userKeys = Array(user._fields.keys)
-                    // 追加fieldの値を初期化する
-                    DispatchQueue.main.async {
-                        self.addFieldManager.keyStr = ""
-                        self.addFieldManager.valueStr = ""
-                        self.tableView.reloadData()
-                    }
-                    
-                } else {
-                    print("ログインしていません")
-                }
-                
-            case let .failure(error):
-                // ユーザー情報の取得が失敗した場合の処理
-                DispatchQueue.main.async {
-                    self.statusLabel.text = "取得に失敗しました:\((error as NSError).code)"
-                }
-            }
-        })
+        self.user = NCMBUser.currentUser
+        self.userKeys = Array(self.user._fields.keys)
+        // 追加fieldの値を初期化する
+        self.addFieldManager.keyStr = ""
+        self.addFieldManager.valueStr = ""
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     /**
@@ -331,7 +302,7 @@ class SegmentUserViewController: UIViewController, UITableViewDelegate, UITableV
     
     // Logoutボタン押下時の処理
     @IBAction func logoutBtn(_ sender: UIButton) {
-        NCMBUser.logOut()
+        _ = NCMBUser.logOut()
         self.dismiss(animated: true, completion: nil)
         print("ログアウトしました")
     }
