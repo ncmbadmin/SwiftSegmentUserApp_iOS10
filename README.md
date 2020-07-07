@@ -17,11 +17,9 @@
 ![画像02](/readme-img/002.png)
 
 ## 動作環境
-* Mac OS X 10.11.6(El Capitan)
-* iPhone5 iOS 9.3.5
-* iPhone6s iOS 10.0.1
-* Simulator iOS 10.0
- * iPhone7
+* Mac OS 10.15.5(Catalina)
+* Simulator iOS 13.5.1
+* SDK v1.1.0
 
 ※上記内容で動作確認をしています
 
@@ -112,58 +110,65 @@
 `SignUpViewController.swift`
 
 ```swift
-// 会員登録
-//NCMBUserのインスタンスを作成
 let user = NCMBUser()
-//ユーザー名を設定
-user.userName = self.userNameTextField.text
-//パスワードを設定
-user.password = self.passwordTextField.text
-
-//会員の登録を行う
-user.signUpInBackground{(error) in
-    if let unwrapError = error as? NSError {
-        // 新規登録失敗時の処理
-
-    } else {
-        // 新規登録成功時の処理
-
+        //ユーザー名を設定
+        user.userName = self.userNameTextField.text
+        //パスワードを設定
+        user.password = self.passwordTextField.text
+        
+        //会員の登録を行う
+        user.signUpInBackground(callback: { result in
+            // TextFieldを空に
+            DispatchQueue.main.async {
+                self.cleanTextField()
+            }
+            
+            switch result {
+                case .success:
+                    // 新規登録成功時の処理
+                    
+                case let .failure(error):
+                    // 新規登録失敗時の処理
+                    
+                }
+        })
     }
-}
 ```
 
 ### ログイン
 
 ```swift
 // ログイン
-NCMBUser.logInWithUsername(inBackground: self.userNameTextField.text, password: self.passwordTextField.text, block:{(user, error) in
-    if let unwrapError = error as? NSError {
-        // 新規登録失敗時の処理
-
-    } else {
-        // 新規登録成功時の処理
-
-    }
-})
+NCMBUser.logInInBackground(userName: self.userNameTextField.text!, password: self.passwordTextField.text!, callback: { result in
+            // TextFieldを空に
+            DispatchQueue.main.async {
+                self.cleanTextField()
+            }
+            
+            switch result {
+            case .success:
+                // ログインに成功した場合の処理
+            case let .failure(error):
+                // 新規登録失敗時の処理
+            }
+        })         
 ```
 
 ### 会員情報の取得
 `SegmentUserViewController.swift`
 
 ```swift
-// NCMBUserのインスタンスを作成
-let user = NCMBUser.current()
-
-// ユーザー情報をデータストアから取得
-user?.fetchInBackground({ (error) in
-    if let unwrapError = error as? NSError {
-        // ユーザー情報の取得が失敗した場合の処理
-
-    } else {
-        // ユーザー情報の取得が成功した場合の処理
-
+//会員情報をカレントユーザーから取得
+func getUser() {
+    self.user = NCMBUser.currentUser
+    self.userKeys = Array(self.user._fields.keys)
+    // 追加fieldの値を初期化する
+    self.addFieldManager.keyStr = ""
+    self.addFieldManager.valueStr = ""
+    DispatchQueue.main.async {
+        self.tableView.reloadData()
     }
-})
+}
 ```
 
 ## 参考
