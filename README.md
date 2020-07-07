@@ -19,7 +19,7 @@
 ## 動作環境
 * Mac OS 10.15.5(Catalina)
 * Simulator iOS 13.5.1
-* SDK v1.1.0
+* Swift SDK v1.1.0
 
 ※上記内容で動作確認をしています
 
