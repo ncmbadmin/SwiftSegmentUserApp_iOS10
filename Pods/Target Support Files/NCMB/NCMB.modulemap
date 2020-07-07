@@ -1,4 +1,4 @@
-framework module NCMB {
+module NCMB {
   umbrella header "NCMB-umbrella.h"
 
   export *

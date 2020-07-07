@@ -3,7 +3,7 @@
 //  SwiftSegmentUserApp
 //
 //  Created by FJCT on 2016/10/31.
-//  Copyright 2017 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
+//  Copyright 2019 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
 //
 
 import UIKit
