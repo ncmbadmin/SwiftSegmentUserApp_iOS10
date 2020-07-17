@@ -21,3 +21,4 @@ workflows:
       - device_farm:
           requires:
             - build
+
