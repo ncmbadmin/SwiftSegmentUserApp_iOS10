@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     //********** APIキーの設定 **********
-    let applicationkey = "YOUR_NCMB_APPLICATION_KEY"
-    let clientkey      = "YOUR_NCMB_CLIENT_KEY"
+    let applicationkey = "03a6b582f54eed71d427418d3d43a6ca5b446274f699f69e034ad71d5da159b7"
+    let clientkey      = "5b7ffcaf8995c45ed5134dde48cb59251122f4a90c49b4920795f5bd59b87302"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // SDKの初期化
