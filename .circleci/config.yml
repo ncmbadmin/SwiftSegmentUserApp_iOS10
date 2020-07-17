@@ -21,3 +21,9 @@ workflows:
       - device_farm:
           requires:
             - build
+          filters:
+          branches:
+            only:
+              - master
+              - circleci-project-setup
+              - ci_test
